@@ -80,24 +80,24 @@ Node* llfilter(Node* head, Comp pred);
 template <typename Comp>
 Node* llfilter(Node* head, Comp pred)
 {
-  
-  if (head == nullptr) {
 
+  if (head == nullptr) {
     return nullptr;
   }
 
   Node* rest = llfilter(head->next, pred);
 
-  // check if needs to be filtered
   if (pred(head->val)) {
+    
     delete head;
+
     return rest;
   } else {
-    // keep the current node and connect it to filtered rest of list
-    head->next = rest;
-    return head;
 
+    head->next= rest;
+    return head;
   }
+  
 
 
 }
